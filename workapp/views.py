@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from datetime import datetime
 
 
 def exercise1(request):
@@ -28,3 +29,19 @@ def exercise3(request):
         context = None
     return render(request, 'exercise3.html', context)
 
+
+def product1(request):
+    context = {
+        'lst': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    }
+    return render(request, 'product1.html', context)
+
+
+def basket1(request):
+    now = datetime.now()
+    pid = request.GET['pid']
+    context = {
+        'pid': pid,
+        'now': now,
+    }
+    return render(request, 'basket1.html', context)
